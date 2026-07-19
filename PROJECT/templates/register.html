@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container">
+    <h2>Donor Registration</h2>
+    <form method="POST">
+        <input type="text" name="name" placeholder="name" required>
+        <input type="number" name="age" placeholder="Age" required>
+        <select name="gender">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+        </select>
+        <select name="blood_group" required>
+            <option value="">Select Blood Group</option>
+            <option>A+</option><option>A-</option><option>B+</option><option>B-</option>
+            <option>O+</option><option>O-</option><option>AB+</option><option>AB-</option>
+        </select>
+        <input type="text" name="phone" placeholder="no" required>
+        <input type="email" name="email" placeholder="email" required>
+        <textarea name="address" placeholder="address" rows="3" required></textarea>
+        <button type="submit" class="btn">Submit Donor Info</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="container">
+    <h2>Post a Blood Request</h2>
+
+    {% with messages = get_flashed_messages() %}
+      {% for msg in messages %}
+        <p style="color:red;">{{ msg }}</p>
+      {% endfor %}
+    {% endwith %}
+
+    <form method="POST">
+
+        <!-- NAME -->
+        <input type="text" name="patient_name"
+               placeholder="Patient Name"
+               pattern="[A-Za-z\s]{3,}"
+               title="Only letters allowed"
+               required>
+
+        <!-- BLOOD GROUP -->
+        <select name="blood_group" required>
+            <option value="">Blood Group Needed</option>
+            <option>A+</option><option>A-</option><option>B+</option><option>B-</option>
+            <option>O+</option><option>O-</option><option>AB+</option><option>AB-</option>
+        </select>
+
+        <!-- STRICT ADDRESS -->
+        <input type="text" name="location"
+               placeholder="Flat/House No, Area, City, Pincode"
+               pattern="^[A-Za-z0-9\s,.-]*\d{1,5}.*[A-Za-z]+.*\d{6}$"
+               title="Example: Flat 12, MG Road, Pune 411001"
+               required>
+
+        <!-- CONTACT -->
+        <input type="text" name="contact"
+               placeholder="Contact Number"
+               pattern="[0-9]{10}"
+               required>
+
+        <label>Date Needed:</label>
+        <input type="date" name="needed_date" required>
+
+        <button type="submit" class="btn">Post Request</button>
+    </form>
+</div>
+
+{% endblock %}

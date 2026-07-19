@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container" style="max-width: 1200px;">
+    <h1>Admin Dashboard</h1>
+    
+    <h3>Registered Donors</h3>
+    <table>
+        <tr><th>ID</th><th>Name</th><th>Blood</th><th>Phone</th><th>Action</th></tr>
+        {% for donor in donors %}
+        <tr>
+            <td>{{ donor.id }}</td>
+            <td>{{ donor.name }}</td>
+            <td>{{ donor.blood_group }}</td>
+            <td>{{ donor.phone }}</td>
+            <td><a href="/delete_donor/{{ donor.id }}" onclick="return confirm('Delete?')" style="color:red;">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h3 style="margin-top: 40px;">Blood Requests</h3>
+    <table>
+        <tr><th>Patient</th><th>Blood</th><th>Location</th><th>Date Needed</th></tr>
+        {% for req in requests %}
+        <tr>
+            <td>{{ req.patient_name }}</td>
+            <td>{{ req.blood_group }}</td>
+            <td>{{ req.location }}</td>
+            <td>{{ req.needed_date }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

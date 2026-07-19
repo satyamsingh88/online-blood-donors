@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container">
+    <h2>Search for Blood Donors</h2>
+    <form method="POST">
+        <div style="display: flex; gap: 10px;">
+            <select name="blood_group">
+                <option value="">Any Blood Group</option>
+                <option>A+</option><option>A-</option><option>B+</option><option>B-</option>
+                <option>O+</option><option>O-</option><option>AB+</option><option>AB-</option>
+            </select>
+            <input type="text" name="location" placeholder="City / Address">
+            <button type="submit" class="btn">Search</button>
+        </div>
+    </form>
+
+    {% if donors %}
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Blood Group</th>
+                <th>Phone</th>
+                <th>Location</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for donor in donors %}
+            <tr>
+                <td>{{ donor.name }}</td>
+                <td>{{ donor.blood_group }}</td>
+                <td><a href="tel:{{ donor.phone }}">{{ donor.phone }}</a></td>
+                <td>{{ donor.address }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% elif request.method == 'POST' %}
+    <p>No donors found for this criteria.</p>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Donor Management</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <nav>
+        <div class="logo">🩸 BloodLife</div>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/search">Search Donor</a></li>
+            <li><a href="/request_blood">Request Blood</a></li>
+            <li><a href="/register">Donate Blood</a></li>
+            {% if session.get('logged_in') %}
+                <li><a href="/admin" style="color: #3498db;">Admin Panel</a></li>
+                <li><a href="/logout">Logout</a></li>
+            {% else %}
+                <li><a href="/login">Admin Login</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert" style="background:#d4edda; color:#155724; padding:10px; text-align:center;">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

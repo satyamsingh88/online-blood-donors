@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="hero">
+    <h1>Be a Hero, Save a Life</h1>
+    <p>Every blood donor is a lifesaver. Join our community today.</p>
+    <div style="margin-top: 20px;">
+        <a href="/register" class="btn">Register as Donor</a>
+        <a href="/search" class="btn" style="background: white; color: var(--primary-color); margin-left: 10px;">Find Donors</a>
+    </div>
+</div>
+
+<div class="container" style="text-align: center;">
+    <h2>Why Donate Blood?</h2>
+    <p>Blood cannot be manufactured. It only comes from generous donors like you.</p>
+    <div style="display: flex; justify-content: space-around; margin-top: 30px;">
+        <div><h3>1 Unit</h3><p>Can save 3 lives</p></div>
+        <div><h3>Every 2 Sec</h3><p>Someone needs blood</p></div>
+    </div>
+</div>
+{% endblock %}

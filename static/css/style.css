@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+:root {
+    --primary-color: #e74c3c;
+    --secondary-color: #c0392b;
+    --dark: #2c3e50;
+    --light: #ecf0f1;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0; padding: 0; background-color: #f9f9f9;
+}
+
+/* Navbar */
+nav {
+    background: var(--dark);
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+nav .logo { font-size: 1.5rem; font-weight: bold; color: var(--primary-color); }
+nav ul { list-style: none; display: flex; margin: 0; }
+nav ul li { margin-left: 20px; }
+nav ul li a { color: white; text-decoration: none; transition: 0.3s; }
+nav ul li a:hover { color: var(--primary-color); }
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),url('bg.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 70vh;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center; 
+}
+
+/* Forms */
+.container { width: 90%; max-width: 800px; margin: 2rem auto; background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+input, select, textarea { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; }
+
+/* Buttons */
+.btn {
+    background: var(--primary-color);
+    color: white; padding: 12px 25px;
+    border: none; border-radius: 5px;
+    cursor: pointer; text-decoration: none; display: inline-block;
+}
+.btn:hover { background: var(--secondary-color); }
+
+/* Table */
+table { width: 100%; border-collapse: collapse; margin-top: 20px; background: white; }
+table th, table td { padding: 12px; border: 1px solid #ddd; text-align: left; }
+table th { background: var(--primary-color); color: white; }
+
+/* Responsive */
+@media (max-width: 768px) {
+    nav { flex-direction: column; }
+    nav ul { padding: 0; margin-top: 10px; }
+    .container { width: 95%; }
+}

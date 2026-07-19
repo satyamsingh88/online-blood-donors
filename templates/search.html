@@ -1,0 +1,129 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<style>
+    body {
+        background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fad0c4, #a18cd1);
+        font-family: Arial, sans-serif;
+    }
+
+    .container {
+        background: white;
+        padding: 25px;
+        border-radius: 12px;
+        max-width: 900px;
+        margin: 40px auto;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    h2 {
+        text-align: center;
+        color: #444;
+        margin-bottom: 20px;
+    }
+
+    form {
+        margin-bottom: 20px;
+    }
+
+    select, input {
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        width: 100%;
+    }
+
+    .btn {
+        background: linear-gradient(135deg, #ff758c, #ff7eb3);
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .btn:hover {
+        background: linear-gradient(135deg, #ff5f6d, #ffc371);
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+    }
+
+    th {
+        background: #ff758c;
+        color: white;
+        padding: 12px;
+    }
+
+    td {
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    tr:hover {
+        background-color: #f9f9f9;
+    }
+
+    a {
+        color: #ff5f6d;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    p {
+        text-align: center;
+        color: #555;
+        font-weight: bold;
+    }
+</style>
+
+<div class="container">
+    <h2>🔍 Search for Blood Donors</h2>
+
+    <form method="POST">
+        <div style="display: flex; gap: 10px;">
+            <select name="blood_group">
+                <option value="">Any Blood Group</option>
+                <option>A+</option><option>A-</option><option>B+</option><option>B-</option>
+                <option>O+</option><option>O-</option><option>AB+</option><option>AB-</option>
+            </select>
+            <input type="text" name="location" placeholder="City / Address">
+            <button type="submit" class="btn">Search</button>
+        </div>
+    </form>
+
+    {% if donors %}
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Blood Group</th>
+                <th>Phone</th>
+                <th>Location</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for donor in donors %}
+            <tr>
+                <td>{{ donor.name }}</td>
+                <td>{{ donor.blood_group }}</td>
+                <td><a href="tel:{{ donor.phone }}">{{ donor.phone }}</a></td>
+                <td>{{ donor.address }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% elif request.method == 'POST' %}
+    <p>No donors found for this criteria.</p>
+    {% endif %}
+</div>
+
+{% endblock %}
